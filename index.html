@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a84ff">
+  <meta name="description" content="A GitHub Pages-ready App Store preview generator.">
+  <title>App Store Generator</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div>
+      <p class="eyebrow">GitHub Pages + Codespaces</p>
+      <h1>App Store Generator</h1>
+      <p class="subtitle">Create a polished App Store-style preview for your web app.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>App Information</h2>
+      <form id="appForm">
+        <div class="grid">
+          <label>App Name
+            <input id="appName" required placeholder="My Awesome App">
+          </label>
+          <label>Bundle ID
+            <input id="bundleId" required placeholder="com.example.myapp">
+          </label>
+          <label>Version
+            <input id="version" required value="1.0.0">
+          </label>
+          <label>Platform
+            <select id="platform">
+              <option>iOS</option>
+              <option>iPadOS</option>
+              <option>Web</option>
+              <option>macOS</option>
+              <option>Android</option>
+            </select>
+          </label>
+          <label>Minimum OS
+            <input id="minimumOS" required value="iOS 17.0">
+          </label>
+          <label>File Size
+            <input id="fileSize" required value="12.4 MB">
+          </label>
+        </div>
+        <div class="actions">
+          <button type="submit">Generate App Store Preview</button>
+          <button type="button" class="secondary" id="getButton">Get</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card" id="previewSection" hidden>
+      <div class="section-heading">
+        <h2>App Store Preview</h2>
+        <span id="platformBadge" class="badge"></span>
+      </div>
+      <div class="app-preview">
+        <div class="app-icon" id="iconPreview">A</div>
+        <div class="app-summary">
+          <h3 id="previewName">App Name</h3>
+          <p id="previewBundle">com.example.app</p>
+          <p class="rating">★★★★★ <span>New</span></p>
+        </div>
+      </div>
+      <dl class="details">
+        <div><dt>Version</dt><dd id="previewVersion"></dd></div>
+        <div><dt>Minimum OS</dt><dd id="previewOS"></dd></div>
+        <div><dt>File Size</dt><dd id="previewSize"></dd></div>
+      </dl>
+    </section>
+
+    <section class="card instructions" id="instructions" hidden>
+      <h2>iOS Home Screen Installation</h2>
+      <ol>
+        <li><strong>Open Safari on your iPad.</strong><br>
+          Visit <code id="siteUrl"></code>.
+        </li>
+        <li><strong>Enter the requested information.</strong><br>
+          Fill in the app name, bundle ID, version, platform, minimum OS, and file size.
+        </li>
+        <li><strong>Generate the App Store preview.</strong><br>
+          Tap <em>Generate App Store Preview</em> and review the result.
+        </li>
+        <li><strong>Get the installation instructions.</strong><br>
+          Tap <em>Get</em> to display these instructions.
+        </li>
+        <li><strong>Add the app to the Home Screen.</strong><br>
+          In Safari, tap <strong>Share</strong> → <strong>Add to Home Screen</strong> → enter the desired name → <strong>Add</strong>.
+        </li>
+        <li><strong>Launch the app.</strong><br>
+          Return to the iPad Home Screen and tap the new icon.
+        </li>
+      </ol>
+      <p class="note">This creates a Home Screen web app/PWA shortcut. It does not submit or install a native App Store package.</p>
+      <p class="note secondary">For a fully installable PWA, add a service worker and the actual 192×192 and 512×512 PNG icons referenced by the manifest.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Static site • GitHub Pages compatible • No backend required</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
